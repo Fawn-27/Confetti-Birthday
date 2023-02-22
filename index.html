@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Birthday</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" href="https://cdn.iconscout.com/icon/free/png-256/birthday-cake-1970514-1666506.png" />
+  </head>
+  <body>
+    
+    
+    <button type="button" id="btn" onclick="playAudio();">MUSIC</button>
+    <audio src="" id="music" loop></audio>
+    <script>
+      var song = "music.mp3";
+      var audio = document.getElementById("music");
+      function playAudio() {
+        audio.src = song;
+        audio.play();
+      }
+    </script>
+    <div id="tsparticles"></div>
+    <!--where the effects are-->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/tsparticles@1.22.1"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/tsparticles-shape-confetti@1.7.1"
+    ></script>
+    <div class="text">
+      <center><h1>Happy Birthday!</h1>
+      <p style="text-transform: uppercase;">
+        From: Fawn<br>
+        Made with: Particle.JS
+      </p>
+      </center>
+    </div>
+    <script>
+      tsParticles.load("tsparticles", {
+        fullScreen: {
+          enable: true,
+        },
+        particles: {
+          number: {
+            value: 0, //no particles when we start
+          },
+          color: {
+            value: ["#9DCED6", "#E6E6FA", "#FFEBB0", "#9303A3"], //confetti colors
+          },
+          shape: {
+            type: "confetti", 
+            options: {
+              confetti: {
+                type: ["circle", "square"],
+              },
+            },
+          },
+          opacity: {
+            value: 1, 
+            animation: {
+              enable: true, //fade confetti
+              minimumValue: 0, 
+              speed: 2, //disappearing speed
+              startValue: "max",
+              destroy: "min",
+            },
+          },
+          size: {
+            value: 7,
+            random: {
+              enable: true, //randomize!
+              minimumValue: 3, 
+            },
+          },
+          life: {
+            duration: {
+              sync: true,
+              value: 5, 
+            },
+            count: 1, // how many times the confetti should appear
+          },
+          move: {
+            enable: true,
+            gravity: {
+              enable: true, //fall
+              acceleration: 20,
+            },
+            speed:  35, 
+            decay: 0.05,
+            outModes: {
+              default: "destroy", //delete
+              top: "none", 
+            },
+          },
+        },
+        background: {
+          color: "#000D25", //background color
+        },
+        emitters: [
+          {
+            direction: "top-right", 
+            rate: {
+              delay: 0.1, 
+              quantity: 10, // how many confettis must spawn at every delay
+            },
+            position: {
+              x: 0,
+              y: 50,
+            },
+            size: {
+              // the emitter size, if > 0 you'll have a spawn area instead of a point
+              width: 0,
+              height: 0,
+            },
+          },
+          {
+            direction: "top-left", 
+            rate: {
+              delay: 0.1,
+              quantity: 10,
+            },
+            position: {
+              x: 100,
+              y: 50,
+            },
+            size: {
+              width: 0,
+              height: 0,
+            },
+          },
+        ],
+      });
+    </script>
+  </body>
+</html>
